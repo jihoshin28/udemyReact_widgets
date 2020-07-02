@@ -1,5 +1,7 @@
 import React from 'react'
 import Accordion from './components/Accordion'
+import Search from './components/Search'
+import axios from 'axios'
 
 const items = [
     {
@@ -20,7 +22,7 @@ const App = () => {
     return (
         <div>
             <h1>Widgets App</h1>
-            <Accordion items = {items}/>
+            <Search/>
         </div>
     )
 }
