@@ -3,6 +3,7 @@ import Accordion from './components/Accordion'
 import Dropdown from './components/Dropdown'
 import Search from './components/Search'
 import axios from 'axios'
+import Translate from './components/Translate'
 
 const items = [
     {
@@ -43,9 +44,9 @@ const App = () => {
             <h1>Widgets App</h1>
             <button onClick={() => setDropdown(!dropdown)}>Toggle Dropdown</button>
             {
-                dropdown ? <Dropdown options={options} selected={selected} onSelectedChange={setSelected} /> : null
+                dropdown ? <Translate selected={selected} onSelectedChange={setSelected} /> : null
             }
-            
+           
         </div>
     )
 }
