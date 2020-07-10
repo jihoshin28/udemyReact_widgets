@@ -5,11 +5,23 @@ import axios from 'axios'
 
 const Convert = ({text, language}) => {
     console.log(text, language)
+    let [delayedText, setDelayedText] = useState(text)
+
+    useEffect(()=> {
+        let timerId = setTimeout(() => {
+            setDelayedText(text)
+        }, 500)
+
+        return() => {
+            clearTimeout(timerId)
+        }
+    }, [text])
+
     useEffect(() => {
         const doTranslation = async()=> {
             const {data} = await axios.post('https://translation.googleapis.com/language/translate/v2', {}, {
                 params: {
-                    q: text,
+                    q: delayedText,
                     target: language.value,
                     key: 'AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms-IwDlM'
                 }
@@ -19,7 +31,7 @@ const Convert = ({text, language}) => {
             
         }
         doTranslation()
-    }, [language, text])
+    }, [language, delayedText])
 
     const [translated, setTranslated] = useState('')
     return(
